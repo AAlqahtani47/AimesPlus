@@ -1,0 +1,82 @@
+﻿@model SeniorProject.ViewModels.FacultyMembersListViewModel
+
+@{
+    ViewData["Title"] = "Admin";
+}
+
+<br />
+<h1>Faculty Member List</h1>
+<hr id="line" />
+
+
+<a asp-action="AdminHome" class="btn btn-secondary">Admin Home</a>
+<table id="ta" class="table table-light table-hover">
+    <thead>
+        <tr>
+            <th>
+                AcademicID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Role
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            try
+            {
+                foreach (var item in Model.FacultyMembers)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.AcademicID)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.Name)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(m => item.Role)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id } ,new {@class="btn btn-warning"}) |
+                            @Html.ActionLink("Delete", "Delete", new {  id = item.Id } ,new {@class="btn btn-danger"})
+                        </td>
+
+                    </tr>
+                }
+            }
+            catch (Exception)
+            {
+                <h1>error</h1>
+
+            }
+        }
+    </tbody>
+
+</table>
+<p>
+    <a asp-action="Create" class="btn btn-primary col-md-12">Create new Member</a>
+
+</p>
+<style>
+    body {
+        background: rgb(157,217,190);
+        background: linear-gradient(180deg, rgba(157,217,190,1) 0%, rgba(130,186,161,1) 41%, rgba(51,140,100,1) 100%);
+    }
+
+    #ta {
+        margin-top: 50px;
+    }
+
+    #line {
+        width: 29%;
+        opacity: 50%;
+        color: #717970;
+        height: 2px;
+    }
+</style>

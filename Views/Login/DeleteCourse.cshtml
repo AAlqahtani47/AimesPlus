@@ -1,0 +1,35 @@
+﻿@model SeniorProject.ViewModels.CourseDeleteViewModel
+
+
+<h1>deleteCourse</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Course</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Course_Title)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Course_Title)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Course_Code)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Course_Code)
+        </dd>
+    </dl>
+    @{
+        int x = Model.Course_Id;}
+        <form asp-controller="Login" asp-action="DeleteCoursePost" method="post">
+        <input type="hidden" asp-for="@x" />
+       
+        <button type="submit"  class="btn btn-danger" >Delete</button> |
+
+        <br />        
+    </form>
+
+    <a asp-action="AdminCourseList">Back to List</a>
+</div>

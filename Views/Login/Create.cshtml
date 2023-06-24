@@ -1,0 +1,108 @@
+﻿@model SeniorProject.ViewModels.FacultyMembersCreateViewModel
+
+@{
+    ViewData["Title"] = "View";
+}
+
+
+
+<h2 class="text-uppercase" id="add-head">Add Faculty Members</h2>
+
+<hr id="line" />
+<img id="logo1" class="position-absolute top-1 end-0" src="https://i.imgur.com/uM5PsQc.png" />
+
+
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="Login" asp-action="CreatePost" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AcademicID" class="control-label fw-bold"></label>
+                <input asp-for="AcademicID" class="form-control" />
+                <span asp-validation-for="AcademicID" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label fw-bold"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Password" class="control-label fw-bold"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="Role" class="control-label fw-bold"></label>
+                <select asp-for="Role" class="form-select">
+                    <option value="Admin">Admin</option>
+                    <option value="Coordinator">Coordinator</option>
+                    <option value="Instructor">Instructor</option>
+                </select>
+                <span asp-validation-for="Role" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-outline-primary col-md-12 fw-bold" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+
+<div>
+    <a class="btn btn-secondary" asp-action="AdminList">Back to List</a>
+</div>
+
+@if (TempData["Message1"] != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            alert('@TempData["Message1"]');
+        };
+    </script>
+}
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+ 
+
+    <style>
+     
+
+        .row {
+            margin-top: 40px;
+        }
+
+        #add-head {
+            text-align: center;
+            font-size: 40px;
+            color: papayawhip;
+        }
+
+        #line {
+            width: 50%;
+            margin: 0 25% 0 25%;
+            opacity: 50%;
+            color: #FBF2CF;
+            height: 3px;
+            border-radius: 70%;
+        }
+
+        #logo1 {
+            margin-top: -90px;
+            margin-right: 10px;
+            width: 150px;
+        }
+    </style>
